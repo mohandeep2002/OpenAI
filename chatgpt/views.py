@@ -4,7 +4,7 @@ import requests
 def generate_response(request):
     url = "https://api.openai.com/v1/engines/text-davinci-002/completions"
 
-    prompt = "Hi this is mohandeep"
+    prompt = "how to make omelette"
     payload = {
       "prompt": prompt,
       "max_tokens": 128,
