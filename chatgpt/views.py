@@ -17,7 +17,8 @@ def generate_response(request):
       "Authorization": "Bearer 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"
     }
     response = requests.post(url, json=payload, headers=headers).json()
-    # print(response)
+    # print(response) just for pushing
+    
     generated_response = response["choices"][0]["text"]
 
     return render(request, 'generated_response.html', {
