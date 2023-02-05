@@ -1,7 +1,13 @@
 <h1>Generated Response:</h1>
+<form action="{% url 'generate_response' %}" method="post">
+    {% csrf_token %}
+    {% comment %} <label for="input">Enter your Question:</label> {% endcomment %}
+    <input type="text" id="input" placeholder="Enter your Question" name="input" size="100">
+    <input type="submit" value="Submit">
+  </form>
 <p>{{ generated_response }}</p>
-<center>
+{% comment %} <center>
     <h6>
         {{res}}
     </h6>
-</center>
+</center> {% endcomment %}
