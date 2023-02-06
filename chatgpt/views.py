@@ -1,12 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import requests
 
 def generate_response(request):
   
     if request.method == 'POST':  
+      
       url = "https://api.openai.com/v1/engines/text-davinci-002/completions"
 
       prompt = request.POST['input']
+      if prompt == None: 
+        return 
       payload = {
         "prompt": prompt,
         "max_tokens": 128,

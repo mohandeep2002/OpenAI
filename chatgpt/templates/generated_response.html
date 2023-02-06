@@ -1,29 +1,31 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<h1>Generated Response:</h1>
-<style>
-    input {
-      text-align: center;
-    }
-    ::-webkit-input-placeholder {
-      text-align: center;
-    }
-    :-moz-placeholder {
-      text-align: center;
-    }
-</style>
-<form action="{% url 'generate_response' %}" method="post">
-    {% csrf_token %}
-    <div class="form-group">
-        {% comment %} <label for="input">Enter your text:</label> {% endcomment %}
-        <input type="text" id="input" placeholder="Enter your Question" name="input" class="form-control">
+{% extends 'index.html' %}
+{% block content %}
+<div class="contanier">
+  <!-- As a heading -->
+  <nav class="navbar bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">Searching using ChatGPT API</span>
     </div>
-    <center>
-        <input type="submit" value="Submit" class="btn btn-primary">
-    </center>
-  </form>
-<p>{{ generated_response }}</p>
-{% comment %} <center>
-    <h6>
-        {{res}}
-    </h6>
-</center> {% endcomment %}
+  </nav>
+  <br>
+  <div class="container">
+    <form method="post" action="{% url 'generate_response' %}">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col">
+          <input type="text" id="input" placeholder="Enter your Question" name="input" class="form-control">
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="container">
+    {% if generated_response %}
+    <h3> Generated Response </h3>
+    <p>{{generated_response}}</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
