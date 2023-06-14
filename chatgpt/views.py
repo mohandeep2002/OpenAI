@@ -23,11 +23,13 @@ def generate_response(request):
       }
       response = requests.post(url, json=payload, headers=headers).json()
       # print(response) just for pushing
+
+      print(response)
       
-      generated_response = response["choices"][0]["text"]
+      # generated_response = response["choices"][0]["text"]
 
       return render(request, 'generated_response.html', {
-          'generated_response': generated_response,
+          'generated_response': "test",
           'res': response
           })
     else :
